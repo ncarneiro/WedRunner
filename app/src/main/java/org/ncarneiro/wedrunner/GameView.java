@@ -142,7 +142,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = holder.lockCanvas();
 
             // Rub out the last frame
-            canvas.drawColor(Color.argb(255, 0, 0, 0));
+            canvas.drawColor(Color.argb(255, 0, 0, 70));//blue sky
 
             // White specs of dust
             paint.setColor(Color.argb(255, 255, 255, 255));
@@ -165,7 +165,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
             canvas.drawBitmap(street1, 0, screenY-street1.getHeight(), paint);
 
-            // Draw the player's ship
+            // Draw the player
             canvas.drawBitmap(player.getBitmap(), player.getX(), player.getY(), paint);
 
             //TODO: draw hud info
@@ -180,16 +180,14 @@ public class GameView extends SurfaceView implements Runnable {
         //Log.e("GameView","OnTouchEvent: "+event.toString());
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                player.setRising(true);
-                Log.e("GameView", "RISING: " + player.getY());
+                player.startJump();
                 // If we are currently on the pause screen, start a new game
                 if(gameOver){
                     startGame();
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                player.setRising(false);
-                Log.e("GameView", "NOT RISING " + player.getY());
+                player.stopJump();
                 break;
         }
         return true;
