@@ -142,7 +142,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = holder.lockCanvas();
 
             // Rub out the last frame
-            canvas.drawColor(Color.argb(255, 0, 0, 70));//blue sky
+            canvas.drawColor(Color.argb(255, 0, 0, 50));//blue night sky
 
             // White specs of dust
             paint.setColor(Color.argb(255, 255, 255, 255));

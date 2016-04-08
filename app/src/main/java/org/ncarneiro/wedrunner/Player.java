@@ -47,11 +47,11 @@ public class Player {
         int bitmapSide = ((screenX/100)*factor);
 
         elevation_multiplier = 1;
-        jump_height = 20;
+        jump_height = 250;
         min_elevation = 1;
         max_elevation = 20;
 
-        maxJumps = 1;
+        maxJumps = 2;
         jumpsPerformed = 0;
         speed = 1;
         elevation = 1;
@@ -97,6 +97,16 @@ public class Player {
             }
         }
         //
+
+        //JUMP
+        int jp;
+        if (jumpsPerformed>0) jp = jumpsPerformed;
+        else jp = 1;
+        int aux = maxY - jump_height*jp;
+        if (y < aux) {
+            y = aux;
+            stopJump();
+        }
 
         //update collision box
         // Refresh hit box location
